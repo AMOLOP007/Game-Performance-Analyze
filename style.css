@@ -270,7 +270,47 @@ nav ul li a:hover {
     font-size: 0.95rem;
 }
 
+/* Hidden Utility */
+.hidden {
+    display: none !important;
+}
+
+/* Brand Selector Styling */
+.brand-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: #2a2a2a;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.brand-option {
+    flex: 1;
+    text-align: center;
+}
+
+.brand-option input {
+    display: none;
+}
+
+.brand-label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--text-dim);
+    transition: 0.3s;
+}
+
+.brand-option input:checked + .brand-label {
+    background: var(--primary-color);
+    color: #000;
+}
+
 /* Tips Section */
+
 
 
 .tips-section {

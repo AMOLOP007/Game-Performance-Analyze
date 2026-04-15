@@ -73,29 +73,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gpu">Select GPU:</label>
+                    <label>Select GPU Brand:</label>
+                    <div class="brand-selector">
+                        <div class="brand-option">
+                            <input type="radio" name="gpuBrand" id="brandNvidia" value="nvidia" checked>
+                            <label for="brandNvidia" class="brand-label">NVIDIA</label>
+                        </div>
+                        <div class="brand-option">
+                            <input type="radio" name="gpuBrand" id="brandAmd" value="amd">
+                            <label for="brandAmd" class="brand-label">AMD</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="gpu">Select GPU Model:</label>
                     <select id="gpu">
-                        <option value="">-- Choose a Graphics Card --</option>
-                        <optgroup label="NVIDIA RTX Series">
-                            <option value="gtx1080ti">GTX 1080 Ti</option>
-                            <option value="rtx2060">RTX 2060</option>
-                            <option value="rtx3060">RTX 3060</option>
-                            <option value="rtx4060">RTX 4060</option>
-                            <option value="rtx4070">RTX 4070</option>
-                            <option value="rtx4080">RTX 4080</option>
-                            <option value="rtx4090">RTX 4090</option>
-                            <option value="rtx5090">RTX 5090</option>
-                        </optgroup>
-                        <optgroup label="AMD Radeon Series">
-                            <option value="rx6600">RX 6600</option>
-                            <option value="rx6700xt">RX 6700 XT</option>
-                            <option value="rx6800">RX 6800</option>
-                            <option value="rx7600">RX 7600</option>
-                            <option value="rx7700xt">RX 7700 XT</option>
-                            <option value="rx7800xt">RX 7800 XT</option>
-                            <option value="rx7900xt">RX 7900 XT</option>
-                            <option value="rx7900xtx">RX 7900 XTX</option>
-                        </optgroup>
+                        <!-- Options will be populated by JavaScript based on Brand selection -->
+                        <option value="">-- Select Brand First --</option>
                     </select>
                 </div>
 
@@ -110,14 +105,19 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="preset">Graphics Preset:</label>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="raytracing">
+                    <label for="raytracing">Enable Ray Tracing (RTX/DXR)</label>
+                </div>
+
+                <div id="presetGroup" class="form-group hidden">
+                    <label for="preset">RT Graphics Preset:</label>
                     <select id="preset">
-                        <option value="ultra">Ultra</option>
-                        <option value="veryhigh">Very High</option>
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
+                        <option value="ultra">Ultra RT</option>
+                        <option value="veryhigh">Very High RT</option>
+                        <option value="high">High RT</option>
+                        <option value="medium">Medium RT</option>
+                        <option value="low">Low RT</option>
                     </select>
                 </div>
 
@@ -133,12 +133,11 @@
             <div id="resultContainer" class="result-card hidden">
                 <h3>Estimated Results</h3>
                 
-                <!-- Selection Summary (Added) -->
+                <!-- Selection Summary -->
                 <div class="specs-summary">
-                    <p>Game: <span id="resGame">-</span></p>
                     <p>Hardware: <span id="resHardware">-</span></p>
+                    <p>Features: <span id="resFeatures">-</span></p>
                     <p>Settings: <span id="resSettings">-</span></p>
-                    <p>Upscaling Booster: <span id="resUpscale">-</span></p>
                 </div>
 
                 <div class="fps-display">

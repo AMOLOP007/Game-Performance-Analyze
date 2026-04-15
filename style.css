@@ -316,10 +316,16 @@ nav ul li a:hover {
     transition: 0.3s;
 }
 
-.brand-option input:checked + .brand-label {
-    background: var(--primary-color);
-    color: #000;
+#brandNvidia:checked + .brand-label {
+    background-color: #76b900;
+    color: #fff;
 }
+
+#brandAmd:checked + .brand-label {
+    background-color: #ed1c24;
+    color: #fff;
+}
+
 
 /* Tips Section */
 

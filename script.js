@@ -6,41 +6,55 @@
 // --- DATASETS ---
 
 const NVIDIA_GPUS = [
-    { id: 'gtx1080ti', name: 'GTX 1080 Ti', factor: 1.0 },
-    { id: 'rtx2060', name: 'RTX 2060', factor: 1.1 },
-    { id: 'rtx3060', name: 'RTX 3060', factor: 1.3 },
-    { id: 'rtx4060', name: 'RTX 4060', factor: 1.5 },
-    { id: 'rtx4070', name: 'RTX 4070', factor: 1.7 },
-    { id: 'rtx4080', name: 'RTX 4080', factor: 2.0 },
-    { id: 'rtx4090', name: 'RTX 4090', factor: 2.4 },
-    { id: 'rtx5090', name: 'RTX 5090', factor: 2.8 }
+    { id: 'gtx1080ti', name: 'GTX 1080 Ti', factor: 0.95 },
+    { id: 'rtx2060', name: 'RTX 2060', factor: 0.9 },
+    { id: 'rtx3060', name: 'RTX 3060', factor: 1.0 },
+    { id: 'rtx4060', name: 'RTX 4060', factor: 1.15 },
+    { id: 'rtx4070', name: 'RTX 4070', factor: 1.35 },
+    { id: 'rtx4080', name: 'RTX 4080', factor: 1.7 },
+    { id: 'rtx4090', name: 'RTX 4090', factor: 2.0 },
+    { id: 'rtx5090', name: 'RTX 5090', factor: 2.4 }
 ];
 
 const AMD_GPUS = [
-    { id: 'rx6600', name: 'RX 6600', factor: 1.1 },
-    { id: 'rx6700xt', name: 'RX 6700 XT', factor: 1.3 },
-    { id: 'rx6800', name: 'RX 6800', factor: 1.5 },
-    { id: 'rx7600', name: 'RX 7600', factor: 1.3 },
-    { id: 'rx7700xt', name: 'RX 7700 XT', factor: 1.7 },
-    { id: 'rx7800xt', name: 'RX 7800 XT', factor: 1.9 },
-    { id: 'rx7900xt', name: 'RX 7900 XT', factor: 2.2 },
-    { id: 'rx7900xtx', name: 'RX 7900 XTX', factor: 2.4 }
+    { id: 'rx6600', name: 'RX 6600', factor: 0.95 },
+    { id: 'rx6700xt', name: 'RX 6700 XT', factor: 1.1 },
+    { id: 'rx6800', name: 'RX 6800', factor: 1.25 },
+    { id: 'rx7600', name: 'RX 7600', factor: 1.05 },
+    { id: 'rx7700xt', name: 'RX 7700 XT', factor: 1.3 },
+    { id: 'rx7800xt', name: 'RX 7800 XT', factor: 1.5 },
+    { id: 'rx7900xt', name: 'RX 7900 XT', factor: 1.8 },
+    { id: 'rx7900xtx', name: 'RX 7900 XTX', factor: 2.0 }
 ];
 
 const BASE_FPS = {
-    'gtav': 80, 'rdr2': 50, 'spiderman': 60, 'minecraft': 70,
-    'cyberpunk': 35, 'codw': 75, 'acv': 55, 'forza5': 80,
-    'eldenring': 60, 'hogwarts': 45
+    'gtav': 95, 
+    'rdr2': 55, 
+    'spiderman': 75, 
+    'minecraft': 80,
+    'cyberpunk': 38, 
+    'codw': 70, 
+    'acv': 60, 
+    'forza5': 85,
+    'eldenring': 50, 
+    'hogwarts': 45
 };
 
 const CPU_FACTORS = {
-    'i5-10400f': 0.85, 'i5-12400f': 1.0, 'i7-12700h': 1.1, 'i9-13900k': 1.15,
-    'r5-5600x': 1.0, 'r7-5800h': 1.05, 'r7-6800h': 1.1, 'r7-7435hs': 1.1,
-    'r9-5900x': 1.12, 'r9-7950x': 1.15
+    // Low Tier (0.9)
+    'i5-10400f': 0.9, 'r5-5600x': 0.9,
+    // Mid Tier (1.0)
+    'i5-12400f': 1.0, 'r7-5800h': 1.0, 'r7-6800h': 1.0, 'r7-7435hs': 1.0,
+    // High Tier (1.05)
+    'i7-12700h': 1.05, 'i9-13900k': 1.05, 'r9-5900x': 1.05, 'r9-7950x': 1.05
 };
 
 const PRESET_MULTIPLIERS = {
-    'low': 1.6, 'medium': 1.3, 'high': 1.1, 'veryhigh': 1.0, 'ultra': 0.85
+    'low': 1.4, 
+    'medium': 1.2, 
+    'high': 1.05, 
+    'veryhigh': 1.0, 
+    'ultra': 0.9
 };
 
 // --- INITIALIZATION ---
@@ -73,7 +87,6 @@ function populateGpus(brand) {
     });
 }
 
-
 // Set default
 populateGpus('nvidia');
 
@@ -91,6 +104,7 @@ rtCheckbox.addEventListener('change', (e) => {
     }
 });
 
+
 document.getElementById('calculateBtn').addEventListener('click', function() {
     const game = document.getElementById('game').value;
     const cpu = document.getElementById('cpu').value;
@@ -105,35 +119,39 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
         return;
     }
 
-    // Step 1: Base Calculation
-    const base = BASE_FPS[game];
+    // Step 1: Base Calculation (RAW FPS)
+    let fps = BASE_FPS[game];
+
+    // Apply scaling factors
     const gpuFactor = parseFloat(gpuSelect.options[gpuSelect.selectedIndex].dataset.factor);
     const cpuFactor = CPU_FACTORS[cpu];
+    const presetFactor = isRtEnabled ? PRESET_MULTIPLIERS[preset] : 1.0; // Preset only applies to RT mode as per user request flow? 
+    // Wait, the user's flow says "fps *= presetFactor" as a step, but they also have RT.
+    // I'll apply it normally as it represents general quality settings.
     
-    let finalFPS = base * gpuFactor * cpuFactor;
+    fps = fps * gpuFactor * cpuFactor * PRESET_MULTIPLIERS[preset];
 
-    // RAM Bonus
-    const ramBonus = { '8': -5, '16': 0, '24': 3, '32': 5 };
-    finalFPS += ramBonus[ramSize];
-
-    // Step 2: Ray Tracing Penalty
+    // Step 2: Ray Tracing Impact
     if (isRtEnabled) {
-        finalFPS *= 0.7; // 30% drop
-        // Step 3: Preset (Only if RT is ON)
-        finalFPS *= PRESET_MULTIPLIERS[preset];
+        fps *= 0.6;
     }
 
-    // Step 4: Upscaling/Frame Gen Boost
+    // Step 3: Upscaling & Frame Generation
     if (isUpscaleEnabled) {
-        finalFPS *= 1.45;
+        fps *= 1.3;
     }
 
-    // Step 5: Clamping (No randomness)
-    finalFPS = Math.round(finalFPS);
-    finalFPS = Math.max(20, Math.min(180, finalFPS));
+    // Step 4: RAM Bonus
+    const ramBonus = { '8': -5, '16': 0, '24': 3, '32': 5 };
+    fps += ramBonus[ramSize];
+
+    // Step 5: Final Clamping (DETERMINISTIC)
+    fps = Math.round(fps);
+    if (fps < 20) fps = 20;
+    if (fps > 180) fps = 180;
 
     // UI UPDATES
-    updateResults(finalFPS, {
+    updateResults(fps, {
         game: document.getElementById('game').options[document.getElementById('game').selectedIndex].text,
         cpu: document.getElementById('cpu').options[document.getElementById('cpu').selectedIndex].text,
         gpu: gpuSelect.options[gpuSelect.selectedIndex].text,

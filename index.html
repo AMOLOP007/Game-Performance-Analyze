@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Performance Analyzer | Estimate Your FPS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Game Performance Analyzer</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#analyzer">Analyzer</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Estimate FPS Before You Play</h2>
+            <p>Wondering if your PC can run that new game? Use our simple tool to check estimated performance based on your hardware specs.</p>
+            <a href="#analyzer" class="btn">Go to Analyzer</a>
+        </div>
+    </section>
+
+    <!-- Analyzer Section -->
+    <section id="analyzer" class="analyzer-section">
+        <div class="container">
+            <div class="card">
+                <h3>System Performance Estimator</h3>
+                <p>Select your game and hardware specifications below:</p>
+                
+                <div class="form-group">
+                    <label for="game">Select Game:</label>
+                    <select id="game">
+                        <option value="">-- Choose a Game --</option>
+                        <option value="gtav">GTA V</option>
+                        <option value="rdr2">Red Dead Redemption 2</option>
+                        <option value="spiderman">Spider-Man Remastered</option>
+                        <option value="minecraft">Minecraft (High Shaders)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="gpu">Select GPU:</label>
+                    <select id="gpu">
+                        <option value="">-- Choose a Graphics Card --</option>
+                        <option value="rtx3050">RTX 3050</option>
+                        <option value="rtx3060">RTX 3060</option>
+                        <option value="rtx4060">RTX 4060</option>
+                        <option value="rtx4070">RTX 4070</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ram">Select RAM:</label>
+                    <select id="ram">
+                        <option value="">-- Choose RAM Size --</option>
+                        <option value="8">8GB</option>
+                        <option value="16">16GB</option>
+                        <option value="24">24GB</option>
+                        <option value="32">32GB</option>
+                    </select>
+                </div>
+
+                <button id="calculateBtn" class="btn-calculate">Calculate Performance</button>
+            </div>
+
+            <!-- Result Section (Initialy hidden) -->
+            <div id="resultContainer" class="result-card hidden">
+                <h3>Estimated Results</h3>
+                <div class="fps-display">
+                    <span id="fpsValue">0</span> <small>FPS</small>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="fpsProgress" class="progress-bar"></div>
+                </div>
+                <p>Performance Level: <strong id="perfLevel">-</strong></p>
+                <div class="suggestion-box">
+                    <p><strong>Suggestion:</strong> <span id="suggestionText"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <h3>Quick Tips to Improve FPS</h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <h4>Update Drivers</h4>
+                    <p>Always keep your GPU drivers updated for the latest optimizations.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>Lower Resolution</h4>
+                    <p>Playing at 1080p instead of 1440p can significantly boost FPS.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>Enable DLSS/FSR</h4>
+                    <p>Use upscaling technologies to get more frames without losing quality.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>Close Background Apps</h4>
+                    <p>Free up RAM and CPU cycles by closing unnecessary software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2024 Game Performance Analyzer. Created for CS Project.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

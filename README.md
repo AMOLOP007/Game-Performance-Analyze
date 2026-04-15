@@ -1,4 +1,4 @@
-# Game Performance Analyzer (GPA v5.0)
+# Game Performance Analyzer
 
 **A deterministic, hardware-aware FPS simulation engine developed for academic research and hardware performance analysis.**
 
@@ -87,10 +87,9 @@ GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScri
 
 ## 📜 Academic Context & Attribution
 **Name:** Amol Manish Tamhankar  
-**Class & Div:** A  
+**Class & Div:** S.Y. A  
 **Roll Number:** 463  
-**Level:** 2nd Year CSE Student  
 **Institution:** Pillai College of Engineering (PCE)  
-**Session:** 2024 - 2026
+**YEAR:** 2025 - 2026
 
 &copy; 2026 Game Performance Analyzer. Created for the CS Laboratory Project.

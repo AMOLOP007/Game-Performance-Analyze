@@ -226,7 +226,29 @@ nav ul li a:hover {
     text-align: left;
 }
 
+/* Specs Summary Styling */
+.specs-summary {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px dashed #444;
+}
+
+.specs-summary p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 5px 0;
+    text-align: left;
+}
+
+.specs-summary span {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
 /* Tips Section */
+
 .tips-section {
     padding: 60px 0;
 }

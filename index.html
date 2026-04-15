@@ -46,6 +46,29 @@
                         <option value="rdr2">Red Dead Redemption 2</option>
                         <option value="spiderman">Spider-Man Remastered</option>
                         <option value="minecraft">Minecraft (High Shaders)</option>
+                        <option value="cyberpunk">Cyberpunk 2077</option>
+                        <option value="codw">Call of Duty Warzone</option>
+                        <option value="acv">Assassin’s Creed Valhalla</option>
+                        <option value="forza5">Forza Horizon 5</option>
+                        <option value="eldenring">Elden Ring</option>
+                        <option value="hogwarts">Hogwarts Legacy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpu">Select CPU:</label>
+                    <select id="cpu">
+                        <option value="">-- Choose a Processor --</option>
+                        <option value="i5-10400f">Intel i5 10400F</option>
+                        <option value="i5-12400f">Intel i5 12400F</option>
+                        <option value="i7-12700h">Intel i7 12700H</option>
+                        <option value="i9-13900k">Intel i9 13900K</option>
+                        <option value="r5-5600x">Ryzen 5 5600X</option>
+                        <option value="r7-5800h">Ryzen 7 5800H</option>
+                        <option value="r7-6800h">Ryzen 7 6800H</option>
+                        <option value="r7-7435hs">Ryzen 7 7435HS</option>
+                        <option value="r9-5900x">Ryzen 9 5900X</option>
+                        <option value="r9-7950x">Ryzen 9 7950X</option>
                     </select>
                 </div>
 
@@ -53,10 +76,33 @@
                     <label for="gpu">Select GPU:</label>
                     <select id="gpu">
                         <option value="">-- Choose a Graphics Card --</option>
-                        <option value="rtx3050">RTX 3050</option>
-                        <option value="rtx3060">RTX 3060</option>
-                        <option value="rtx4060">RTX 4060</option>
-                        <option value="rtx4070">RTX 4070</option>
+                        <optgroup label="Older Gen">
+                            <option value="gtx1080ti">GTX 1080 Ti</option>
+                        </optgroup>
+                        <optgroup label="RTX 2000 Series">
+                            <option value="rtx2060">RTX 2060</option>
+                            <option value="rtx2070">RTX 2070</option>
+                            <option value="rtx2080">RTX 2080</option>
+                        </optgroup>
+                        <optgroup label="RTX 3000 Series">
+                            <option value="rtx3050">RTX 3050</option>
+                            <option value="rtx3060">RTX 3060</option>
+                            <option value="rtx3070">RTX 3070</option>
+                            <option value="rtx3080">RTX 3080</option>
+                        </optgroup>
+                        <optgroup label="RTX 4000 Series">
+                            <option value="rtx4050">RTX 4050</option>
+                            <option value="rtx4060">RTX 4060</option>
+                            <option value="rtx4070">RTX 4070</option>
+                            <option value="rtx4080">RTX 4080</option>
+                        </optgroup>
+                        <optgroup label="RTX 5000 Series">
+                            <option value="rtx5050">RTX 5050</option>
+                            <option value="rtx5060">RTX 5060</option>
+                            <option value="rtx5070">RTX 5070</option>
+                            <option value="rtx5080">RTX 5080</option>
+                            <option value="rtx5090">RTX 5090</option>
+                        </optgroup>
                     </select>
                 </div>
 
@@ -77,6 +123,13 @@
             <!-- Result Section (Initialy hidden) -->
             <div id="resultContainer" class="result-card hidden">
                 <h3>Estimated Results</h3>
+                
+                <!-- Selection Summary (Added) -->
+                <div class="specs-summary">
+                    <p>Game: <span id="resGame">-</span></p>
+                    <p>Hardware: <span id="resHardware">-</span></p>
+                </div>
+
                 <div class="fps-display">
                     <span id="fpsValue">0</span> <small>FPS</small>
                 </div>
@@ -88,6 +141,7 @@
                     <p><strong>Suggestion:</strong> <span id="suggestionText"></span></p>
                 </div>
             </div>
+
         </div>
     </section>
 

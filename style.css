@@ -168,12 +168,24 @@ nav ul li a:hover {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.4s ease, transform 0.2s;
+}
+
+.btn-calculate.btn-nvidia {
+    background-color: #76b900;
+    color: #fff;
+}
+
+.btn-calculate.btn-amd {
+    background-color: #ed1c24;
+    color: #fff;
 }
 
 .btn-calculate:hover {
     background-color: var(--hover-color);
+    transform: scale(1.02);
 }
+
 
 /* Result Section */
 .result-card {

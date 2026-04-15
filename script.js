@@ -49,10 +49,21 @@ const gpuSelect = document.getElementById('gpu');
 const brandRadios = document.getElementsByName('gpuBrand');
 const rtCheckbox = document.getElementById('raytracing');
 const presetGroup = document.getElementById('presetGroup');
+const calcBtn = document.getElementById('calculateBtn');
 
 function populateGpus(brand) {
     const list = brand === 'nvidia' ? NVIDIA_GPUS : AMD_GPUS;
     gpuSelect.innerHTML = '<option value="">-- Choose a Model --</option>';
+    
+    // Update button color
+    if (brand === 'nvidia') {
+        calcBtn.classList.add('btn-nvidia');
+        calcBtn.classList.remove('btn-amd');
+    } else {
+        calcBtn.classList.add('btn-amd');
+        calcBtn.classList.remove('btn-nvidia');
+    }
+
     list.forEach(gpu => {
         const option = document.createElement('option');
         option.value = gpu.id;
@@ -61,6 +72,7 @@ function populateGpus(brand) {
         gpuSelect.appendChild(option);
     });
 }
+
 
 // Set default
 populateGpus('nvidia');

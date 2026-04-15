@@ -247,7 +247,31 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
 /* Tips Section */
+
 
 .tips-section {
     padding: 60px 0;

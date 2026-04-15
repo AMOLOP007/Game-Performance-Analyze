@@ -38,14 +38,22 @@ Developing a realistic performance model required reconciling hundreds of dispar
 ### 1. The Landing Experience
 The entry point features a sleek, high-end dashboard designed with modern CSS glassmorphism.
 
+![Hero Section](screenshots/hero.png)
+
 ### 2. Intelligent Hardware Selection (NVIDIA Build)
 When selecting NVIDIA hardware, the UI adopts brand-consistent green styling. Notice the real-time calculation summarizing the selected features (Ray Tracing, DLSS, Frame Gen).
+
+![NVIDIA Build](screenshots/nvidia_result.png)
 
 ### 3. Hardware Constraint Detection (AMD Build)
 The analyzer is smart enough to detect when hardware is being pushed beyond its limits. In this example, the engine identifies a performance limit and provides an automated suggestion to the user.
 
+![AMD Build](screenshots/amd_result.png)
+
 ### 4. Optimized Results & Tips
 The bottom of the page provides technical advice based on the calculation result, guiding the user on how to optimize their specific hardware configuration.
+
+![Footer & Tips](screenshots/footer.png)
 
 ---
 
@@ -78,7 +86,9 @@ GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScri
 ---
 
 ## 📜 Academic Context & Attribution
-**Name:** [User Name]  
+**Name:** Amol Manish Tamhankar  
+**Class & Div:** A  
+**Roll Number:** 463  
 **Level:** 2nd Year CSE Student  
 **Institution:** Pillai College of Engineering (PCE)  
 **Session:** 2024 - 2026

@@ -42,21 +42,16 @@
                     <label for="game">Select Game:</label>
                     <select id="game">
                         <option value="">-- Choose a Game --</option>
-                        <option value="Cyberpunk 2077">Cyberpunk 2077</option>
-                        <option value="Elden Ring">Elden Ring</option>
-                        <option value="Counter-Strike 2">Counter-Strike 2</option>
-                        <option value="Fortnite">Fortnite</option>
-                        <option value="Red Dead Redemption 2">Red Dead Redemption 2</option>
-                        <option value="Hogwarts Legacy">Hogwarts Legacy</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="resolution">Target Resolution:</label>
-                    <select id="resolution">
-                        <option value="1080p">1080p (FHD)</option>
-                        <option value="1440p">1440p (QHD)</option>
-                        <option value="4K">4K (UHD)</option>
+                        <option value="gtav">GTA V</option>
+                        <option value="rdr2">Red Dead Redemption 2</option>
+                        <option value="spiderman">Spider-Man Remastered</option>
+                        <option value="minecraft">Minecraft (High Shaders)</option>
+                        <option value="cyberpunk">Cyberpunk 2077</option>
+                        <option value="codw">Call of Duty Warzone</option>
+                        <option value="acv">Assassin’s Creed Valhalla</option>
+                        <option value="forza5">Forza Horizon 5</option>
+                        <option value="eldenring">Elden Ring</option>
+                        <option value="hogwarts">Hogwarts Legacy</option>
                     </select>
                 </div>
 
@@ -64,11 +59,16 @@
                     <label for="cpu">Select CPU:</label>
                     <select id="cpu">
                         <option value="">-- Choose a Processor --</option>
-                        <option value="Intel i9-13900K">Intel i9-13900K</option>
-                        <option value="Intel i7-12700K">Intel i7 12700K</option>
-                        <option value="Intel i5-12400">Intel i5 12400</option>
-                        <option value="Ryzen 9 7950X">Ryzen 9 7950X</option>
-                        <option value="Ryzen 5 5600">Ryzen 5 5600</option>
+                        <option value="i5-10400f">Intel i5 10400F</option>
+                        <option value="i5-12400f">Intel i5 12400F</option>
+                        <option value="i7-12700h">Intel i7 12700H</option>
+                        <option value="i9-13900k">Intel i9 13900K</option>
+                        <option value="r5-5600x">Ryzen 5 5600X</option>
+                        <option value="r7-5800h">Ryzen 7 5800H</option>
+                        <option value="r7-6800h">Ryzen 7 6800H</option>
+                        <option value="r7-7435hs">Ryzen 7 7435HS</option>
+                        <option value="r9-5900x">Ryzen 9 5900X</option>
+                        <option value="r9-7950x">Ryzen 9 7950X</option>
                     </select>
                 </div>
 
@@ -107,32 +107,42 @@
 
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="raytracing">
-                    <label for="raytracing">Enable Ray Tracing</label>
+                    <label for="raytracing">Enable Ray Tracing (RTX/DXR)</label>
+                </div>
+
+                <div id="presetGroup" class="form-group hidden">
+                    <label for="preset">RT Graphics Preset:</label>
+                    <select id="preset">
+                        <option value="ultra">Ultra RT</option>
+                        <option value="veryhigh">Very High RT</option>
+                        <option value="high">High RT</option>
+                        <option value="medium">Medium RT</option>
+                        <option value="low">Low RT</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="upscaleMode">Upscaling Mode:</label>
-                    <select id="upscaleMode">
-                        <option value="None">None (Raw Render)</option>
-                        <option value="Quality">Quality</option>
-                        <option value="Balanced">Balanced</option>
-                        <option value="Performance">Performance</option>
+                    <label for="resolution">Target Resolution:</label>
+                    <select id="resolution">
+                        <option value="720p">720p (HD)</option>
+                        <option value="1080p" selected>1080p (Full HD)</option>
+                        <option value="1440p">1440p (QHD)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="upscale">Upscaling Mode (DLSS/FSR):</label>
+                    <select id="upscale">
+                        <option value="none" selected>None (Native)</option>
+                        <option value="quality">Quality (1.15x Boost)</option>
+                        <option value="balanced">Balanced (1.25x Boost)</option>
+                        <option value="performance">Performance (1.4x Boost)</option>
                     </select>
                 </div>
 
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="framegen">
-                    <label for="framegen">Enable Frame Generation (RTX 40 / RX 7k)</label>
-                </div>
-
-                <div id="presetGroup" class="form-group">
-                    <label for="preset">Graphics Preset:</label>
-                    <select id="preset">
-                        <option value="Ultra">Ultra</option>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
+                    <label for="framegen">Enable Frame Generation (AI Frames)</label>
                 </div>
 
                 <button id="calculateBtn" class="btn-calculate">Calculate Performance</button>
